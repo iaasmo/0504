@@ -1,8 +1,7 @@
 $bgColor:#b37676; 
 $buttonSize: 48px;
-
-
 *{box-sizing: border-box;}
+
 body{
   background-image: url("../images/Rectangle\ 1.jpg");
   background-size: cover;
@@ -10,82 +9,111 @@ body{
   margin:0;
   min-height: 100vh;
   color:#fff;
-  >header{
-    border:2px dashed red;
+  > header {
+    padding: 1em 2em;
     display:flex;
     justify-content: space-between;
+    // bezposrednie dzieci headera
+    > * {
+      display: flex;
+      align-items: center;
+    }
+    .pageLogo{
+      a{
+        color:inherit;
+        text-decoration: none;
+        display:flex;
+        padding-right: 25px;
+        b{
+          font-size:30px;
+        }
+      }
+    }
     nav{
       position:relative;
       min-height: $buttonSize;
+      //domyslne wyswietlanie
       #toggler{display:none;}
-      label{
-        border:2px dashed yellow;
+      label{        
         position:absolute;
         width:$buttonSize;
         height:$buttonSize;
         right:0;
         top:0;
-        cursor: pointer;
+        cursor:pointer;
+        // burger
         div{
-            background-color: #fff;
-            position: absolute;
-            width: 80%;
-            left: 10%;
-            height: 10%;
-            transition: .8s;
-            &:nth-child(1){
-                top: 17.5%;
-                border-color: green;
-            }
-            &:nth-child(2){
-                top: 45%;
-            }
-            &:nth-child(3){
-                top: 72.5%;
-            }
+          transition:.5s;
+          background-color: rgb(255, 255, 255);
+          border-radius: 5px;
+          position:absolute;
+          width:80%;
+          left:10%;
+          height:10%;
+          &:nth-child(1){
+            top:17.5%;
+          }
+          &:nth-child(2){
+            top:45%;
+          }
+          &:nth-child(3){
+            top:72.5%;
+
+          }
         }
+
       }
       ul{
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding:0 .7em;
+        list-style: none;
         display:none;
-        border:2px dashed blue;
-        // display:flex;
         flex-direction: column;
         position: absolute;
         right:0;
         top:$buttonSize;
         margin:0;
+        li{
+          padding:.7em .7em;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          a{
+            text-decoration: none;
+            color:inherit;
+            text-align: center;
+          }
+        }
       }
-
+      // burger po kliknieciu
       #toggler:checked{
-        ~ ul {display:flex;}
-        ~label{
+        ~ ul { display : flex;}
+        ~ label { 
           border-color: blue;
           div{
             &:nth-child(1){
-              transform: rotate(45deg);
-              top: 45%;
+              transform: rotate(-135deg);
+              top:45%;
             }
             &:nth-child(2){
-              opacity: 0;              
+              opacity:0;
             }
             &:nth-child(3){
-            transform: rotate(-45deg);
-            top: 45%;  
+              transform: rotate(-45deg);
+              top:45%;
             }
           }
         }
-        
       }
-
-    }
-
-    @media (min-width:768px){
-      nav{
+      @media (min-width:768px){
+        label{display:none;}
         ul{
           display:flex;
+          flex-direction: row;
+          position:static;
         }
       }
     }
-
   }
 }
