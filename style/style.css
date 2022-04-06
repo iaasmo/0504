@@ -37,11 +37,12 @@ body > header .pageLogo a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 25px;
 }
 
 body > header .pageLogo a b {
   font-size: 30px;
+  padding-right: 25px;
+  padding-left: 5px;
 }
 
 body > header nav {
