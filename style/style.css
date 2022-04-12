@@ -1,9 +1,31 @@
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f1f1f1;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 body {
+  line-height: 1.8em;
+  font-family: "Montserrat";
   background-image: url("../images/Rectangle 1.jpg");
   background-size: cover;
   background-position: center top;
@@ -37,15 +59,19 @@ body > header .pageLogo a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 body > header .pageLogo a b {
-  font-size: 30px;
-  padding-right: 25px;
-  padding-left: 5px;
+  font-family: "Philosopher";
+  font-size: clamp(1.5em, 2vw, 2em);
+  margin-left: .3em;
 }
 
 body > header nav {
+  margin-left: 20px;
   position: relative;
   min-height: 48px;
 }
@@ -87,7 +113,8 @@ body > header nav label div:nth-child(3) {
 }
 
 body > header nav ul {
-  background-color: rgba(255, 255, 255, 0.2);
+  font-family: "Lato";
+  background-color: rgba(8, 8, 8, 0.8);
   border-radius: 10px;
   padding: 0 .7em;
   list-style: none;
@@ -147,11 +174,13 @@ body > header nav #toggler:checked ~ label div:nth-child(3) {
   top: 45%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   body > header nav label {
     display: none;
   }
   body > header nav ul {
+    font-size: 1.5em;
+    padding: .6em 4em;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -160,6 +189,123 @@ body > header nav #toggler:checked ~ label div:nth-child(3) {
         -ms-flex-direction: row;
             flex-direction: row;
     position: static;
+  }
+}
+
+body main {
+  margin-top: 10vh;
+  padding: 0 1em;
+}
+
+body main .wrapper > header {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-family: "Lemon";
+}
+
+body main .wrapper > header h1 {
+  margin-bottom: 0;
+  font-size: clamp(2em, 4vw, 4em);
+}
+
+body main .wrapper > header h2 {
+  margin-top: 0;
+  font-size: clamp(1.5em, 3vw, 3em);
+}
+
+body main .wrapper > header button {
+  background-color: transparent;
+  border: 2px solid #fff;
+  min-height: 1.5em;
+  border-radius: 1.5em;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.5em 2.5em;
+  margin-bottom: 10vh;
+  font-size: 1.2em;
+}
+
+body main .wrapper > article {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+body main .wrapper > article .playButton {
+  background-color: transparent;
+  border: 2px solid #fff;
+  min-height: 1.5em;
+  border-radius: 1.5em;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1.5em;
+  border-radius: 50%;
+  position: relative;
+}
+
+body main .wrapper > article .playButton span {
+  position: absolute;
+  top: 0;
+  left: .245em;
+  font-size: 2.5em;
+}
+
+body main .wrapper > article header .container {
+  padding-left: 1em;
+  overflow-y: scroll;
+  max-height: 45vh;
+}
+
+@media (min-width: 768px) {
+  body main {
+    margin-left: 15vw;
+  }
+  body main .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body main .about {
+    width: 40%;
+  }
+  body main .about h3 {
+    font-size: clamp(1em, 2vw, 1.5em);
+  }
+}
+
+body footer .social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 2em;
+}
+
+@media (min-width: 768px) {
+  body footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
+  body footer .social {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  body footer .social div {
+    margin: .8em;
   }
 }
 /*# sourceMappingURL=style.css.map */

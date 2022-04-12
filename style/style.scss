@@ -1,51 +1,95 @@
 $bgColor:#b37676; 
 $buttonSize: 48px;
-*{box-sizing: border-box;}
 
+@mixin borderButton($padding){
+  background-color: transparent;
+  border:2px solid #fff;
+  min-height:1.5em;
+  border-radius:1.5em;
+  color:white;
+  cursor:pointer;
+  display:inline-block;
+  // DO PRZYCISKU VIEW PROGRAM
+  // padding:.5em 2.5em;
+  // DO PRZYCISKU PLAY!
+  // padding:1em;
+  padding: $padding;
+}
+// @include borderButton(.5em 2.5em);
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.2); 
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.6); 
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f1f1f1; 
+}
+*{box-sizing: border-box;}
 body{
+  line-height: 1.8em;
+  font-family: "Montserrat";
   background-image: url("../images/Rectangle\ 1.jpg");
   background-size: cover;
   background-position: center top;
   margin:0;
   min-height: 100vh;
   color:#fff;
+
   > header {
     padding: 1em 2em;
     display:flex;
     justify-content: space-between;
-    // bezposrednie dzieci headera
+
+    // dzieci headera div i nav
     > * {
       display: flex;
       align-items: center;
+
+
     }
+
     .pageLogo{
       a{
-        color:inherit;
+        color:inherit; // atrybut dziedziczony po rodzicu
         text-decoration: none;
-        display:flex;            
+        display:flex;
+        align-items: center;
         b{
-          font-size:30px;
-          padding-right: 25px;
-          padding-left: 5px;
+          font-family: "Philosopher";
+          font-size:clamp(1.5em, 2vw, 2em);
+          margin-left: .3em;
+          
         }
       }
     }
+
     nav{
+      margin-left: 20px;
       position:relative;
       min-height: $buttonSize;
-      //domyslne wyswietlanie
       #toggler{display:none;}
-      label{        
+      label{
+        // border:2px dashed yellow;
         position:absolute;
         width:$buttonSize;
         height:$buttonSize;
         right:0;
         top:0;
         cursor:pointer;
+
+
         // burger
         div{
           transition:.5s;
-          background-color: rgb(255, 255, 255);
+          background-color: rgb(255, 255, 255,);
           border-radius: 5px;
           position:absolute;
           width:80%;
@@ -59,13 +103,13 @@ body{
           }
           &:nth-child(3){
             top:72.5%;
-
           }
         }
 
       }
       ul{
-        background-color: rgba(255, 255, 255, 0.2);
+        font-family: "Lato";
+        background-color: rgba(8, 8, 8, 0.8);
         border-radius: 10px;
         padding:0 .7em;
         list-style: none;
@@ -75,6 +119,7 @@ body{
         right:0;
         top:$buttonSize;
         margin:0;
+
         li{
           padding:.7em .7em;
           display:flex;
@@ -87,7 +132,7 @@ body{
           }
         }
       }
-      // burger po kliknieciu
+      //burgerclick
       #toggler:checked{
         ~ ul { display : flex;}
         ~ label { 
@@ -95,7 +140,7 @@ body{
           div{
             &:nth-child(1){
               transform: rotate(-135deg);
-              top:45%;
+              top:45%; 
             }
             &:nth-child(2){
               opacity:0;
@@ -107,12 +152,94 @@ body{
           }
         }
       }
-      @media (min-width:768px){
+      @media (min-width:1200px){
         label{display:none;}
-        ul{
+        ul{      
+          font-size: 1.5em;
+          padding: .6em 4em;
           display:flex;
           flex-direction: row;
           position:static;
+          
+        }
+      }
+    }
+  }
+  main{
+    margin-top:10vh;
+    padding:0 1em;
+    .wrapper{      
+      > header{
+        flex:1;
+        font-family: "Lemon";
+        //line-height: unset;
+        h1{
+          margin-bottom:0;
+          font-size: clamp(2em, 4vw, 4em);
+        }
+        h2{
+          margin-top:0;
+          font-size: clamp(1.5em, 3vw, 3em);
+        }
+        button{
+          @include borderButton(.5em 2.5em);
+          margin-bottom:10vh;
+          font-size: 1.2em;
+        }
+      }
+      > article{
+        flex:1;
+        display:flex;
+        align-items: flex-start;
+        .playButton{
+          @include borderButton(1.5em);
+          border-radius: 50%;
+          position:relative;
+          span{
+            position:absolute;
+            top:0;
+            left:.245em;
+            font-size:2.5em;
+          }
+        }
+        header{
+          .container{
+            padding-left:1em;
+            overflow-y: scroll;
+            max-height:45vh;
+          }
+        }
+      }
+    }
+    @media(min-width:768px){
+      margin-left:15vw;
+      .wrapper{
+        display:flex;
+      }
+      .about{
+        width:40%;
+        h3{
+          font-size: clamp(1em, 2vw, 1.5em);
+        }
+      }
+    }
+  }
+  footer{
+    .social{
+      display: flex;
+      justify-content: space-evenly;
+      padding:2em;
+    }
+  }
+  @media (min-width:768px) {
+    footer{
+      position:fixed;
+      left:0;
+      bottom:0;
+      .social {
+        flex-direction: column;
+        div{
+          margin:.8em;
         }
       }
     }
